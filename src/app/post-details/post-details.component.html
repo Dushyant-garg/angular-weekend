@@ -1,0 +1,10 @@
+<div *ngIf="post; else notFound">
+  <h2>{{ post.title }}</h2>
+  <p><strong>Content:</strong> {{ post.content }}</p>
+  <p><strong>Author ID:</strong> {{ post.authorld }}</p>
+  <p><strong>Created At:</strong> {{ post.createdAt | dateFormat }}</p>
+</div>
+
+<ng-template #notFound>
+  <p>Post not found.</p>
+</ng-template>

@@ -1,0 +1,59 @@
+<h2>User Profile</h2>
+
+<div *ngIf="user; else notFound">
+  <p><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Phone:</strong> {{ user.phone }}</p>
+  <p><strong>Gender:</strong> {{ user.gender }}</p>
+  <p><strong>Date of Birth:</strong> {{ user.dob }}</p>
+  <p><strong>Role:</strong> {{ user.role }}</p>
+</div>
+
+<ng-template #notFound>
+  <p>Post not found.</p>
+</ng-template>
+
+<h2>Edit Profile</h2>
+
+<form #profileForm="ngForm" (ngSubmit)="onUpdateProfile(user.id)" *ngIf="user">
+  <label>First Name:
+    <input name="firstName" [(ngModel)]="user.firstName" required />
+  </label><br />
+
+  <label>Last Name:
+    <input name="lastName" [(ngModel)]="user.lastName" required />
+  </label><br />
+
+  <label>Email:
+    <input name="email" [(ngModel)]="user.email" required />
+  </label><br />
+
+  <label>Phone:
+    <input name="phone" [(ngModel)]="user.phone" required />
+  </label><br />
+
+  <label>Gender:
+    <select name="gender" [(ngModel)]="user.gender" required>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+  </label><br />
+
+  <label>Date of Birth:
+    <input type="date" name="dob" [(ngModel)]="user.dob" required />
+  </label><br />
+
+  <label>Role:
+    <select name="role" [(ngModel)]="user.role" required>
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+    </select>
+  </label><br />
+
+  <label>Password:
+    <input name="password" [(ngModel)]="user.password" required type="password" />
+  </label><br />
+
+  <button type="submit" [disabled]="!profileForm.form.valid">Update Profile</button>
+</form>
+
