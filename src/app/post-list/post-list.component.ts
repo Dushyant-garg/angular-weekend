@@ -362,3 +362,108 @@ activeSection: number | null = null;
 getSectionDuration(section: any): number {
   return section.lectures.reduce((sum, lec) => sum + lec.durationMinutes, 0);
 }
+
+<ng-container *ngIf="activeTab === 'testimonials'">
+  <div class="testimonials-container">
+    <div class="testimonial-card" *ngFor="let review of reviews">
+      
+      <!-- Rating at top left -->
+      <div class="card-top">
+        <div class="rating">
+          {{ review.rating }} <span class="star">★</span>
+        </div>
+        <!-- Image at top right -->
+        <img class="top-image" src="https://i.imgur.com/example-testimonial.png" alt="testimonial-img" />
+      </div>
+
+      <!-- User Review Paragraph -->
+      <p class="comment">{{ review.comment }}</p>
+
+      <!-- Bottom Area with background color -->
+      <div class="user-info">
+        <img class="avatar" [src]="review.user.avatarUrl" alt="User Avatar" />
+        <div class="user-details">
+          <div class="user-name">{{ review.user.name }}</div>
+          <div class="user-track">{{ review.user.track }}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ng-container>
+.testimonials-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.testimonial-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rating {
+  font-weight: bold;
+  color: #333;
+}
+
+.star {
+  color: #f5b50a;
+}
+
+.top-image {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.comment {
+  margin: 12px 0;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.4;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;  /* Bottom background color */
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.user-track {
+  font-size: 12px;
+  color: #666;
+}
+
