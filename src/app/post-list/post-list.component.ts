@@ -467,3 +467,91 @@ getSectionDuration(section: any): number {
   color: #666;
 }
 
+
+<h3 class="related-title">Related Courses</h3>
+<div class="related-courses-container">
+  <div class="related-card" *ngFor="let course of relatedCourses">
+    <div class="left">
+      <img [src]="course.thumbnailUrl" alt="Thumbnail" class="thumbnail" />
+      <div class="course-info">
+        <h4 class="course-title">{{ course.title }}</h4>
+        <p class="duration">{{ course.duration }}</p>
+      </div>
+    </div>
+    <div class="right">
+      <div class="rating">{{ course.rating }} ★</div>
+      <div class="reviews">{{ course.reviews }} Reviews</div>
+    </div>
+  </div>
+</div>
+.related-title {
+  font-size: 22px;
+  margin-bottom: 1rem;
+}
+
+.related-courses-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.related-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.related-card:hover {
+  transform: translateY(-2px);
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.thumbnail {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.course-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.course-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.duration {
+  font-size: 14px;
+  color: #666;
+}
+
+.right {
+  text-align: right;
+}
+
+.rating {
+  font-weight: bold;
+  font-size: 16px;
+  color: #ff9800;
+}
+
+.reviews {
+  font-size: 13px;
+  color: #666;
+}
+
