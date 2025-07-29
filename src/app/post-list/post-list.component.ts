@@ -152,3 +152,60 @@ course: any;
     alert('Enrollment successful!');
   }
 }
+
+<div class="course-summary">
+  <div class="summary-item">
+    <div class="label">Level</div>
+    <div class="value">{{ level }}</div>
+  </div>
+  <div class="summary-item">
+    <div class="label">Rating</div>
+    <div class="value">
+      {{ rating }} <span class="star">★</span>
+      <span class="reviews">({{ reviewCount }} reviews)</span>
+    </div>
+  </div>
+  <div class="summary-item">
+    <div class="label">Duration</div>
+    <div class="value">{{ duration }}</div>
+  </div>
+  <div class="summary-item">
+    <div class="label">Flexible Schedule</div>
+    <div class="value">{{ schedule }}</div>
+  </div>
+</div>
+  .course-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  margin-top: 20px;
+  gap: 16px;
+  font-family: sans-serif;
+}
+
+.summary-item .label {
+  color: #777;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.summary-item .value {
+  font-size: 15px;
+  color: #222;
+}
+
+.star {
+  color: #f5b50a;
+  margin-left: 4px;
+}
+
+.reviews {
+  color: #888;
+  font-size: 13px;
+  margin-left: 4px;
+}
+
