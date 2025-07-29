@@ -298,4 +298,67 @@ export class CourseDetailsComponent {
   color: #333;
 }
 
+<div class="accordion" *ngFor="let section of sections; let i = index">
+    <div class="accordion-header" (click)="activeSection = activeSection === i ? null : i">
+      <h4>{{ section.title }}</h4>
+      <span>{{ section.lectures.length }} Lectures • {{ getSectionDuration(section) }} min</span>
+    </div>
 
+    <div class="accordion-body" *ngIf="activeSection === i">
+      <div class="lecture" *ngFor="let lecture of section.lectures">
+        <span class="lecture-title">{{ lecture.title }}</span>
+        <span class="lecture-duration">{{ lecture.durationMinutes }} min</span>
+      </div>
+    </div>
+  </div>
+
+  .accordion {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  background-color: #f7f7f7;
+  padding: 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+  background-color: #eaeaea;
+}
+
+.accordion-body {
+  padding: 10px 16px;
+  background-color: #fff;
+}
+
+.lecture {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.lecture:last-child {
+  border-bottom: none;
+}
+
+.lecture-title {
+  color: #333;
+}
+
+.lecture-duration {
+  color: #777;
+  font-size: 14px;
+}
+activeSection: number | null = null;
+
+getSectionDuration(section: any): number {
+  return section.lectures.reduce((sum, lec) => sum + lec.durationMinutes, 0);
+}
