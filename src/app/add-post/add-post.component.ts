@@ -15,7 +15,7 @@ export class AddPostComponent {
     id: 0,
     title: '',
     content: '',
-    authorld: 1,
+    authorId: 1,
     createdAt: ''
   };
 
@@ -24,7 +24,7 @@ export class AddPostComponent {
   addPost() {
     const user = JSON.parse(localStorage.getItem('user') || 'null'); 
     this.post.id = Posts.length + 1;
-    this.post.authorld = user.id;
+    this.post.authorId = user.id;
     this.post.createdAt = new Date().toISOString();
     Posts.push({ ...this.post });
     alert('Post added successfully!');

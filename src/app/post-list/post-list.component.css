@@ -1,4 +1,4 @@
-.container {
+/* .container {
   margin: 20px;
   font-family: Arial, sans-serif;
 }
@@ -15,4 +15,57 @@ thead {
 th, td {
   text-align: left;
   padding: 8px;
+} */
+.results-container {
+  display: flex;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+/* Filter Panel */
+.filter-panel {
+  width: 250px;
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.filter-group {
+  margin-bottom: 1.5rem;
+}
+
+.filter-group h4 {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stars {
+  display: inline-flex;
+}
+
+.stars .filled {
+  color: #ffc107;
+}
+
+.stars span {
+  color: #ccc;
+}
+
+/* Right Panel */
+.results-section {
+  flex: 1;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
 }

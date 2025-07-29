@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <h2>Posts List</h2>
   <table border="1" cellpadding="10" cellspacing="0">
     <thead>
@@ -15,7 +15,7 @@
         <td>{{ post.id }}</td>
         <td><a [routerLink]="['/posts', post.id]">{{ post.title }}</a></td>
         <td>{{ post.content }}</td>
-        <td>{{ post.authorld }}</td>
+        <td>{{ post.authorId }}</td>
         <td>{{ post.createdAt | dateFormat }}</td>
       </tr>
     </tbody>
@@ -25,4 +25,61 @@
     {{ showOnlyMyPosts ? 'Show All Posts' : 'Show My Posts' }}
   </button>
 
+</div> -->
+
+<div class="results-container">
+  <!-- Left Filter Panel -->
+  <aside class="filter-panel">
+    <h3>Filter</h3>
+
+    <!-- Duration -->
+    <div class="filter-group">
+      <h4>Duration</h4>
+      <label *ngFor="let opt of durationOptions">
+        <input type="radio" name="duration" [value]="opt.value" [(ngModel)]="filters.duration" (change)="applyFilters()" />
+        {{ opt.label }}
+      </label>
+    </div>
+
+    <!-- Rating -->
+    <div class="filter-group">
+      <h4>Rating</h4>
+      <label *ngFor="let opt of ratingOptions" class="rating-row">
+        <input type="radio" name="rating" [value]="opt.value" [(ngModel)]="filters.rating" (change)="applyFilters()" />
+        <span class="stars">
+          <ng-container *ngFor="let star of opt.stars">
+            <span [class.filled]="star">&#9733;</span>
+          </ng-container>
+        </span>
+        &nbsp;{{ opt.label }}
+      </label>
+    </div>
+
+    <!-- Published Date -->
+    <div class="filter-group">
+      <h4>Published Date</h4>
+      <label *ngFor="let opt of publishedDateOptions">
+        <input type="radio" name="publishedDate" [value]="opt.value" [(ngModel)]="filters.publishedDate" (change)="applyFilters()" />
+        {{ opt.label }}
+      </label>
+    </div>
+
+    <!-- Course Level -->
+    <div class="filter-group">
+      <h4>Course Level</h4>
+      <label *ngFor="let opt of levelOptions">
+        <input type="radio" name="level" [value]="opt.value" [(ngModel)]="filters.level" (change)="applyFilters()" />
+        {{ opt.label }}
+      </label>
+    </div>
+  </aside>
+
+  <!-- Right Course Card Grid -->
+  <section class="results-section">
+    <h2>{{ filteredCourses.length }} Results for "{{ searchQuery }}"</h2>
+
+    <div class="course-grid">
+      <app-course-card *ngFor="let course of filteredCourses" [course]="course"></app-course-card>
+    </div>
+  </section>
 </div>

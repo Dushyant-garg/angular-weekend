@@ -6,7 +6,7 @@ export const Users = [
       gender: 'female',
       age: 28,
       dob: '1996-02-14',
-      phone: '555-1234',
+      phone: 555-1234,
       email: 'alice.johnson@example.com',
       role: 'admin',
       password: 'admin123'
@@ -18,7 +18,7 @@ export const Users = [
       gender: 'female',
       age: 28,
       dob: '1996-02-14',
-      phone: '555-1234',
+      phone: 555-1234,
       email: 'bob@example.com',
       role: 'user',
       password: 'admin123'
@@ -30,7 +30,7 @@ export const Users = [
       gender: 'female',
       age: 28,
       dob: '1996-02-14',
-      phone: '555-1234',
+      phone: 555-1234,
       email: 'liz@example.com',
       role: 'user',
       password: 'admin123'
@@ -42,7 +42,7 @@ export const Users = [
       gender: 'female',
       age: 28,
       dob: '1996-02-14',
-      phone: '555-1234',
+      phone: 555-1234,
       email: 'may@example.com',
       role: 'admin',
       password: 'admin123'

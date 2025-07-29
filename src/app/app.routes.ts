@@ -7,13 +7,14 @@ import { AdminGuard } from './guards/admin.guard';
 import { AddUserComponent } from './add-user/add-user.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     { path: 'users', component: UserListComponent, canActivate: [AdminGuard] },
-    { path: 'posts', component: PostListComponent },
-    { path: 'posts/:id', component: PostDetailsComponent },
+    { path: 'posts', component: PostListComponent, canActivate: [AuthGuard]  },
+    { path: 'posts/:id', component: PostDetailsComponent, canActivate: [AuthGuard]  },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: AddUserComponent, canActivate: [AdminGuard] },
-    { path: 'add-post', component: AddPostComponent },
-    { path: 'profile', component: ProfileComponent }
+    { path: 'add-post', component: AddPostComponent, canActivate: [AuthGuard]  },
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]  }
 ];
