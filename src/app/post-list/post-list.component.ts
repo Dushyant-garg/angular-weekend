@@ -209,3 +209,93 @@ course: any;
   margin-left: 4px;
 }
 
+<!-- Tab Navigation -->
+<div class="tab-container">
+  <div class="tabs">
+    <div 
+      class="tab" 
+      [class.active]="activeTab === 'overview'" 
+      (click)="selectTab('overview')">
+      Overview
+    </div>
+    <div 
+      class="tab" 
+      [class.active]="activeTab === 'content'" 
+      (click)="selectTab('content')">
+      Course Content
+    </div>
+    <div 
+      class="tab" 
+      [class.active]="activeTab === 'author'" 
+      (click)="selectTab('author')">
+      Author Details
+    </div>
+    <div 
+      class="tab" 
+      [class.active]="activeTab === 'testimonials'" 
+      (click)="selectTab('testimonials')">
+      Testimonials
+    </div>
+  </div>
+
+  <div class="tab-content">
+    <ng-container *ngIf="activeTab === 'overview'">
+      <p>This is the course overview section.</p>
+    </ng-container>
+    <ng-container *ngIf="activeTab === 'content'">
+      <p>This is the course content section.</p>
+    </ng-container>
+    <ng-container *ngIf="activeTab === 'author'">
+      <p>Author details go here.</p>
+    </ng-container>
+    <ng-container *ngIf="activeTab === 'testimonials'">
+      <p>Student testimonials will appear here.</p>
+    </ng-container>
+  </div>
+</div>
+export class CourseDetailsComponent {
+  activeTab: string = 'overview';
+
+  selectTab(tab: string) {
+    this.activeTab = tab;
+  }
+}
+.tab-container {
+  margin-top: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #555;
+  transition: 0.2s ease;
+}
+
+.tab:hover {
+  color: #000;
+}
+
+.tab.active {
+  border-bottom: 2px solid #007bff;
+  color: #007bff;
+}
+
+.tab-content {
+  padding: 16px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+
